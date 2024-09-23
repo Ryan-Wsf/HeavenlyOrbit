@@ -28,27 +28,28 @@
     margin: auto;
 }
 
-body {
+.account body {
     position: relative;
     height: 100%;
 }
 
-h1{
+.account h1{
     font-family: var(--orbitron);
     font-weight: 700;
     color: var(--white);
-    font-size: 48px;
+    font-size: 38px;
     text-align: center;
     padding-bottom: 20px;
 }
 
-p{
+.account p{
     font-family: var(--roboto);
     font-size: 18px;
     color: var(--white);
+    margin-top: 20px;
 }
 
-a{
+.account a{
     text-decoration: none;
     color: var(--white);
     font-family: var(--roboto);
@@ -58,22 +59,26 @@ a{
 
 /* Classes */
 
-#div_background_image{
+.account #div_background_image{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: url('../img/Background_register.jpg');
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
-    padding: 0;
     display: flex;
 }
 
 
 /* Animation */
 
-.anim_undercase {
+.account .anim_undercase {
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     font-size: 20px;
     position: relative;
     padding-bottom: 5px;
@@ -84,7 +89,7 @@ a{
     font-weight: 700;
 }
 
-.anim_undercase:before {
+.account .anim_undercase:before {
     content: '';
     position: absolute;
     width: 0;
@@ -95,50 +100,57 @@ a{
     transition: all 0.3s ease;
 }
 
-.anim_undercase:hover:before {
+.account .anim_undercase:hover:before {
     visibility: visible;
     width: 100%;
 }
 
 /* Form */
 
-.opacity_background{
-    background-color: rgba(0, 0, 0, 0.75);
-    padding: 20px 40px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.75);
-    border-radius: 4px;
+.account .opacity_background{
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 30px 40px;
 }
 
-form{
+.account form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 15px;
 }
 
-.div_input{
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding-bottom: 15px;
+.account .div_input{
+    border-bottom: 2px solid #ccc;
+    margin: 15px 0;
 }
 
-label{
+.account input{
+    width: 100%;
     font-family: var(--roboto);
-    font-size: 18px;
-    padding-bottom: 5px;
     color: var(--white);
-}
-
-input{
-    font-family: var(--roboto);
     font-size: 18px;
-    padding: 7px;
-    color: var(--black);
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-button{
+.account ::placeholder {
+    font-size: 18px;
+    font-family: var(--roboto);
+    color: var(--white);
+    padding-left: 3px;
+}
+
+
+.account button{
     align-self: center;
     margin-top: 30px;
     font-size: 24px!important;
 }
+
+

@@ -6,7 +6,7 @@ import ChooseDestination from '../components/chooseDestination';
 
 const Home = () => {
     return (
-        <>
+        <div className='home'>
             <Header />
             <main>
                 <ChooseDestination />
@@ -29,7 +29,7 @@ const Home = () => {
                 </section>
             </main>
             <Footer />
-        </>
+        </div>
     )
 }
 

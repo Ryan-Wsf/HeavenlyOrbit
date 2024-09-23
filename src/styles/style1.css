@@ -24,17 +24,17 @@
 
 /* Global */
 
-.max_width1440{
+.home .max_width1440{
     max-width: 1440px;
     margin: auto;
 }
 
-body {
+.home body {
     position: relative;
     height: 100%;
   }
 
-h1{
+  .home h1{
     font-family: var(--orbitron);
     font-weight: 700;
     color: var(--white);
@@ -42,7 +42,7 @@ h1{
     text-align: center;
 }
 
-h2{
+.home h2{
     font-family: var(--orbitron);
     font-weight: 700;
     color: var(--black);
@@ -50,20 +50,20 @@ h2{
     text-align: center;
 }
 
-a{
+.home a{
     text-decoration: none;
     color: var(--white);
     font-family: var(--orbitron);
     font-size: 24px;
 }
 
-p{
+.home p{
     font-family: var(--roboto);
     font-size: 18px;
     color: var(--black);
 }
 
-#div_background_image{
+.home #div_background_image{
     background-image: url('../img/background_galaxie.jpeg');
     object-fit: cover;
     background-size: cover;
@@ -73,7 +73,7 @@ p{
     padding-bottom: 150px;
 }
 
-ul{
+.home ul{
     list-style: none;
     padding: 0;
 }
@@ -108,7 +108,7 @@ ul{
 
 /* Header */
 
-header div{
+.home header div{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,33 +116,33 @@ header div{
     color: var(--white);
 }
 
-#logo{
+.home #logo{
     font-family: var(--orbitron);
     font-size: 36px;
     color: var(--white);
 }
 
-header nav ul{
+.home header nav ul{
     display: flex;
     gap: 40px;
 }
 
-header nav ul li{
+.home header nav ul li{
     font-family: var(--orbitron);
     font-size: 18px;
 }
 
-header nav ul li a{
+.home header nav ul li a{
     font-family: var(--orbitron);
 }
 
 /* Section 1 */
 
-#section1{
+.home #section1{
     margin: 100px 0;
 }
 
-#section1 div{
+.home #section1 div{
     max-width: 1100px;
     margin: auto;
     padding: 120px 80px;
@@ -155,14 +155,14 @@ header nav ul li a{
     background-color: rgba(0, 0, 0, 0.75);
 }
 
-#section1 h2{
+.home #section1 h2{
     font-size: 32px;
     font-family: var(--orbitron);
     color: var(--white);
     font-weight: 400;
 }
 
-#section1 div a{
+.home #section1 div a{
     text-decoration: none;
     color: var(--white);
     font-size: 28px;
@@ -228,11 +228,11 @@ header nav ul li a{
     transition: all 0.3s;
 }
 
-#section2 h2{
+.home #section2 h2{
     padding: 50px 0;
 }
 
-#section2 h3{
+.home #section2 h3{
     font-family: var(--raleway);
     font-size: 32px;
     color: var(--white);
@@ -242,7 +242,7 @@ header nav ul li a{
 
 /* Section 3 */
 
-#section3{
+.home #section3{
     background-image: url(../img/Background-quizz.jpg);
     object-fit: cover;
     background-position: center;
@@ -250,19 +250,19 @@ header nav ul li a{
     background-size: cover;
 }
 
-#section3 h2{
+.home #section3 h2{
     color: var(--white);
     text-align: left;
 }
 
-#section3 p{
+.home #section3 p{
     color: var(--white);
     width: 72%;
     line-height: 2;
     font-size: 24px;
 }
 
-#section3 div{
+.home #section3 div{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -271,14 +271,14 @@ header nav ul li a{
     align-items: flex-start;
 }
 
-#section3 a{
+.home #section3 a{
     font-size: 24px;
     font-weight: 500;
 }
 
 /* Section4 */
 
-#section4{
+.home #section4{
     background-image: url(../img/Lune-gauche.jpg);
     object-fit: cover;
     background-position: center;
@@ -286,31 +286,31 @@ header nav ul li a{
     background-size: cover;
 }
 
-#section4 h2{
+.home #section4 h2{
     color: var(--white);
     text-align: start;
 }
 
-#section4 p{
+.home #section4 p{
     color: var(--white);
     line-height: 2;
     font-size: 24px;
 }
 
-#section4 div{
+.home #section4 div{
     display: grid;
     grid-template-columns: 35% auto;
     padding: 300px 0 150px 0;
 }
 
-#section4 div article{
+.home #section4 div article{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 100px;
 }
 
-#section4 a{
+.home #section4 a{
     font-size: 24px;
     font-weight: 500;
     align-self: flex-start;
