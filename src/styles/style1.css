@@ -1,0 +1,345 @@
+
+/* Import */
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* All */
+
+*{
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+/* Root */
+
+:root{
+    --black: #000;
+    --white: #fff;
+    --purple: #4B0082;
+    --roboto: 'Roboto', sans-serif;
+    --orbitron: 'Orbitron', sans-serif;
+}
+
+/* Global */
+
+.max_width1440{
+    max-width: 1440px;
+    margin: auto;
+}
+
+body {
+    position: relative;
+    height: 100%;
+  }
+
+h1{
+    font-family: var(--orbitron);
+    font-weight: 700;
+    color: var(--white);
+    font-size: 68px;
+    text-align: center;
+}
+
+h2{
+    font-family: var(--orbitron);
+    font-weight: 700;
+    color: var(--black);
+    font-size: 52px;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: var(--white);
+    font-family: var(--orbitron);
+    font-size: 24px;
+}
+
+p{
+    font-family: var(--roboto);
+    font-size: 18px;
+    color: var(--black);
+}
+
+#div_background_image{
+    background-image: url('../img/background_galaxie.jpeg');
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 800px;
+    padding-bottom: 150px;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+
+/* Animation */
+
+.anim_undercase {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.anim_undercase:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--white); 
+    transition: all 0.3s ease;
+}
+
+.anim_undercase:hover:before {
+    visibility: visible;
+    width: 100%;
+}
+
+/* Header */
+
+header div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    color: var(--white);
+}
+
+#logo{
+    font-family: var(--orbitron);
+    font-size: 36px;
+    color: var(--white);
+}
+
+header nav ul{
+    display: flex;
+    gap: 40px;
+}
+
+header nav ul li{
+    font-family: var(--orbitron);
+    font-size: 18px;
+}
+
+header nav ul li a{
+    font-family: var(--orbitron);
+}
+
+/* Section 1 */
+
+#section1{
+    margin: 100px 0;
+}
+
+#section1 div{
+    max-width: 1100px;
+    margin: auto;
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 40px;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#section1 h2{
+    font-size: 32px;
+    font-family: var(--orbitron);
+    color: var(--white);
+    font-weight: 400;
+}
+
+#section1 div a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 28px;
+    font-family: var(--orbitron);
+    font-weight: 700;
+}
+
+/* Main */
+
+/* Section 2 */
+
+
+#div_section2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 40px
+}
+
+.a_galaxies_section2{
+    background-image: url(../img/Galaxies.jpg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 650px;
+    width: 100%;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+.a_planetes_section2{
+    background-image: url(../img/Planetes.jpg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 650px;
+    width: 100%;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+.a_etoiles_section2{
+    background-image: url(../img/Etoiles.jpeg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 650px;
+    width: 100%;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+.a_galaxies_section2:hover,
+.a_planetes_section2:hover,
+.a_etoiles_section2:hover{
+    scale: 1.02;
+    opacity: 0.85;
+    transition: all 0.3s;
+}
+
+#section2 h2{
+    padding: 50px 0;
+}
+
+#section2 h3{
+    font-family: var(--raleway);
+    font-size: 32px;
+    color: var(--white);
+    text-align: center;
+    padding-top: 60px;
+}
+
+/* Section 3 */
+
+#section3{
+    background-image: url(../img/Background-quizz.jpg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#section3 h2{
+    color: var(--white);
+    text-align: left;
+}
+
+#section3 p{
+    color: var(--white);
+    width: 72%;
+    line-height: 2;
+    font-size: 24px;
+}
+
+#section3 div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 100px;
+    padding: 100px 0 150px 0;
+    align-items: flex-start;
+}
+
+#section3 a{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* Section4 */
+
+#section4{
+    background-image: url(../img/Lune-gauche.jpg);
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#section4 h2{
+    color: var(--white);
+    text-align: start;
+}
+
+#section4 p{
+    color: var(--white);
+    line-height: 2;
+    font-size: 24px;
+}
+
+#section4 div{
+    display: grid;
+    grid-template-columns: 35% auto;
+    padding: 300px 0 150px 0;
+}
+
+#section4 div article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+#section4 a{
+    font-size: 24px;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+/* Footer */
+
+footer{
+    background-color: var(--black);
+    color: var(--white);
+}
+
+footer div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+
+}
+
+footer nav ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+
+footer a{
+    font-size: 18px;
+    font-family: var(--roboto);
+}
+
