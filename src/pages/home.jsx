@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import ChooseDestination from '../components/chooseDestination';
+import InfiniteCarousel from '../components/InfiniteCarousel';
 
 const Home = () => {
     return (
         <div className='home'>
             <Header />
             <main>
-                <ChooseDestination />
+                <InfiniteCarousel />
                 <section id="section3">
                     <div className="max_width1440">
                         <h2>Testez vos connaissances</h2>

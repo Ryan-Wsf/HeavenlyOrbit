@@ -174,70 +174,92 @@
 
 /* Section 2 */
 
+.div_section2 {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 20px auto;
+}
 
-#div_section2{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.div_section2 > div {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    gap: 20px;
+}
+
+.div_section2 > div > a {
+    flex: 0 0 calc(33.333% - 13.333px);
+    max-width: calc(33.333% - 13.333px);
+    position: relative;
+    height: 650px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    padding-bottom: 40px
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
 }
 
-.a_galaxies_section2{
-    background-image: url(../img/Galaxies.jpg);
-    object-fit: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-button-left {
+    left: 30px;
+}
+
+.carousel-button-right {
+    right: 30px;
+}
+
+.img-carousel {
     height: 650px;
     width: 100%;
     border-radius: 15px;
-    transition: all 0.3s;
-}
-
-.a_planetes_section2{
-    background-image: url(../img/Planetes.jpg);
+    position: relative;
+    overflow: hidden;
     object-fit: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 650px;
-    width: 100%;
-    border-radius: 15px;
+}
+
+.article-carousel {
+    transition: all 0.3s;
+}
+.article-carousel:hover{
+    transform: scale(1.02);
     transition: all 0.3s;
 }
 
-.a_etoiles_section2{
-    background-image: url(../img/Etoiles.jpeg);
-    object-fit: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 650px;
-    width: 100%;
-    border-radius: 15px;
-    transition: all 0.3s;
-}
-
-.a_galaxies_section2:hover,
-.a_planetes_section2:hover,
-.a_etoiles_section2:hover{
-    scale: 1.02;
-    opacity: 0.85;
-    transition: all 0.3s;
-}
-
-.home #section2 h2{
-    padding: 50px 0;
-}
-
-.home #section2 h3{
+.section2 h3 {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
     font-family: var(--raleway);
     font-size: 32px;
     color: var(--white);
     text-align: center;
-    padding-top: 60px;
+    margin: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.section2 h2{
+    margin-top: 20px;
 }
 
 /* Section 3 */

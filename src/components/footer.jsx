@@ -5,7 +5,7 @@ import { HashLink } from 'react-router-hash-link';
 const Footer = () => {
     return (
         <footer>
-            <div>
+            <div className='max_width1440'>
                 <nav>
                     <ul>
                         <li><Link to="/" className="anim_undercase">Accueil</Link></li>
