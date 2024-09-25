@@ -12,7 +12,7 @@ const ForgotPassword = () => {
                         <div className='div_input'>
                             <input type="email" id="email" name="email" placeholder='Email' />
                         </div>
-                        <p>Je connais mon mot de passe : <Link to="#" className='anim_undercase'>Se connecter</Link></p>
+                        <p>Je connais mon mot de passe : <Link to="/login" className='anim_undercase'>Se connecter</Link></p>
                         <button type="submit" className='anim_undercase'>Envoyer</button>
                     </form>
                 </div>

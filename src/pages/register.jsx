@@ -20,7 +20,7 @@ const Register = () => {
                         <div className='div_input'>
                             <input type="password" id="password" name="password" placeholder='Mot de passe' />
                         </div>
-                        <p>Vous avez déjà un compte ? <Link to="#" className='anim_undercase'>Se connecter</Link></p>
+                        <p>Vous avez déjà un compte ? <Link to="/login" className='anim_undercase'>Se connecter</Link></p>
                         <button type="submit" className='anim_undercase'>Inscription</button>
                     </form>
                 </div>

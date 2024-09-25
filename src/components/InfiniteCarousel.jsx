@@ -4,10 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation } from 'swiper/modules';
 
-const InfiniteCarousel = ( datas ) => {
-    console.log(datas.datas.destinations);
+const InfiniteCarousel = ( {datas} ) => {
     return (
-        <section className="section2 max_width1440">
+        <section id="section2" className="max_width1440">
             <h2>Explorez l'Univers : Choisissez une Destination</h2>
             <Swiper
                 spaceBetween={30}
@@ -23,7 +22,7 @@ const InfiniteCarousel = ( datas ) => {
                 navigation={true}
                 modules={[Navigation]}
                 className="div_section2">
-                  {datas.datas.destinations.map((item) => (
+                  {datas.map((item) => (
                     <SwiperSlide key={item.id}>
                         <article className="article-carousel">
                             <h3>{item.name}</h3>

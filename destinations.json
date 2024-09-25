@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Planètes",
+    "image": "./img/Planetes.jpg",
+    "link": ""
+  },
+  {
+    "id": 2,
+    "name": "Etoiles",
+    "image": "/img/Etoiles.jpg",
+    "link": ""
+  },
+  {
+    "id": 3,
+    "name": "Galaxies",
+    "image": "/img/Galaxies.jpg",
+    "link": ""
+  },
+  {
+    "id": 4,
+    "name": "Nébuleuses",
+    "image": "/img/Nebuleuses.jpg",
+    "link": ""
+  },
+  {
+    "id": 5,
+    "name": "Quasars",
+    "image": "/img/Quasars.jpg",
+    "link": ""
+  },
+  {
+    "id": 6,
+    "name": "Pulsars",
+    "image": "./img/Pulsars.jpg",
+    "link": ""
+  }
+]

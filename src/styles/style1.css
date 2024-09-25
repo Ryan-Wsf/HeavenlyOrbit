@@ -32,9 +32,9 @@
 .home body {
     position: relative;
     height: 100%;
-  }
+}
 
-  .home h1{
+h1{
     font-family: var(--orbitron);
     font-weight: 700;
     color: var(--white);
@@ -49,21 +49,20 @@
     font-size: 52px;
     text-align: center;
 }
-
-.home a{
+a{
     text-decoration: none;
     color: var(--white);
     font-family: var(--orbitron);
     font-size: 24px;
 }
 
-.home p{
+p{
     font-family: var(--roboto);
     font-size: 18px;
     color: var(--black);
 }
 
-.home #div_background_image{
+.home .div_background_image{
     background-image: url('../img/background_galaxie.jpeg');
     object-fit: cover;
     background-size: cover;
@@ -73,24 +72,29 @@
     padding-bottom: 150px;
 }
 
-.home ul{
+ul{
     list-style: none;
     padding: 0;
 }
 
 
+
+
 /* Animation */
 
-.anim_undercase {
+.home .anim_undercase {
     text-decoration: none;
-    color: #fff;
-    font-size: 18px;
+    color: var(--white);
+    font-size: 20px;
     position: relative;
     padding-bottom: 5px;
     transition: color 0.3s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-.anim_undercase:before {
+.home .anim_undercase:before {
     content: '';
     position: absolute;
     width: 0;
@@ -101,14 +105,14 @@
     transition: all 0.3s ease;
 }
 
-.anim_undercase:hover:before {
+.home .anim_undercase:hover:before {
     visibility: visible;
     width: 100%;
 }
 
 /* Header */
 
-.home header div{
+header div{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,23 +120,23 @@
     color: var(--white);
 }
 
-.home #logo{
+#logo{
     font-family: var(--orbitron);
     font-size: 36px;
     color: var(--white);
 }
 
-.home header nav ul{
+header nav ul{
     display: flex;
     gap: 40px;
 }
 
-.home header nav ul li{
+header nav ul li{
     font-family: var(--orbitron);
-    font-size: 18px;
+    font-size: 20px;
 }
 
-.home header nav ul li a{
+header nav ul li a{
     font-family: var(--orbitron);
 }
 
@@ -252,7 +256,7 @@
     margin: 10px;
 }
 
-.section2 h3 {
+#section2 h3 {
     position: absolute;
     bottom: 30px;
     left: 0;
@@ -267,7 +271,7 @@
     text-transform: uppercase;
 }
 
-.section2 h2{
+#section2 h2{
     margin-top: 20px;
 }
 

@@ -14,7 +14,8 @@ const Login = () => {
                         <div className='div_input'>
                             <input type="password" id="password" name="password" placeholder='Mot de passe' />
                         </div>
-                        <p>Vous n'avez pas de compte ? <Link to="#" className='anim_undercase'>S'inscrire</Link></p>
+                        <p>Vous n'avez pas de compte ? <Link to="/register" className='anim_undercase'>S'inscrire</Link></p>
+                        <p>Mot de passe oublié ? <Link to="/forgotPassword" className='anim_undercase'>Cliquez-ici.</Link></p>
                         <button type="submit" className='anim_undercase'>Connexion</button>
                     </form>
                 </div>

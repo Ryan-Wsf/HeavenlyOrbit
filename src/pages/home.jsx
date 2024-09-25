@@ -2,19 +2,23 @@ import { Link } from 'react-router-dom';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import InfiniteCarousel from '../components/InfiniteCarousel';
-import Destinations from '../../Back.json';
+import Destinations from '../../destinations.json';
+import Section1 from '../components/section1';
 
 const Home = () => {
     return (
         <div className='home'>
+            <div className='div_background_image'>
             <Header />
+            <Section1 />
+            </div>
             <main>
                 <InfiniteCarousel datas={Destinations} />
                 <section id="section3">
                     <div className="max_width1440">
                         <h2>Testez vos connaissances</h2>
                         <p>Plongez-vous dans l'univers fascinant de l'astronomie et mettez vos connaissances à l'épreuve ! Que vous soyez un explorateur débutant ou un expert aguerri passionné par les mystères de l'espace, notre quiz est conçu pour tous les niveaux. Sélectionnez votre niveau de compétence et découvrez si vous pouvez relever les défis cosmiques. Bonne chance, et que les étoiles vous guident !</p>
-                        <Link to="#" className="anim_undercase">Accédez au Quizz</Link>
+                        <Link to="/quizzSelect" className="anim_undercase">Accédez au Quizz</Link>
                     </div>
                 </section>
                 <section id="section4">
