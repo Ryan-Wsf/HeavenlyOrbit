@@ -5,12 +5,13 @@ import Header from '../components/header';
 const QuizzSelect = ({ datas }) => {
     const [selectedLevel, setSelectedLevel] = useState(null);  // Niveau sélectionné
     const [selectedQuizz, setSelectedQuizz] = useState(null);  // Quizz sélectionné
+    const [base, setBase] = useState("Veuillez sélectionner un Quizz");  // Nombre de questions du quizz
     const navigate = useNavigate();
 
     // Fonction appelée quand l'utilisateur clique sur "Commencez le quizz"
     const handleStartQuizz = () => {
         if (selectedQuizz) {
-            navigate(`/quizz/${selectedQuizz.id}`);
+            navigate(`/quizzProgress/${selectedLevel.id}/${selectedQuizz.id}`);
         } else {
             alert("Veuillez sélectionner un quizz.");
         }
@@ -29,9 +30,13 @@ const QuizzSelect = ({ datas }) => {
                 <Header />
                 <main className="max_width1440">
                     <h1>Quizz</h1>
-                    <p className='p_title1'>Sélectionnez votre niveau de compétence</p>
+                    {/* Message explicite basé sur le niveau sélectionné */}
+                    <p className='p_title1'>{levelMessages[selectedLevel?.name]}</p>
                     
                     {/* Sélection du niveau */}
+                    {base && (
+                        <p className='p_title1'>{base}</p>
+                    )}
                     <div className='level_select'>
                         {datas.map((item) => (
                             <button
@@ -39,20 +44,14 @@ const QuizzSelect = ({ datas }) => {
                                 key={item.id}
                                 onClick={() => {
                                     setSelectedLevel(item);
-                                    setSelectedQuizz(null);  // Réinitialiser le quizz sélectionné
+                                    setSelectedQuizz(null);
+                                    setBase(null);
                                 }}
                             >
                                 {item.name}
                             </button>
                         ))}
                     </div>
-
-                    {/* Message explicite basé sur le niveau sélectionné */}
-                    {selectedLevel && (
-                        <p className='level_message'>
-                            {levelMessages[selectedLevel.name]}
-                        </p>
-                    )}
 
                     {/* Affichage des quizz correspondant au niveau sélectionné */}
                     {selectedLevel && (

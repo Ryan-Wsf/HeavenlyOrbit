@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashLink } from 'react-router-hash-link';
 
-const Section1 = () => {
+const HeroSection = () => {
     return (
         <section id="section1">
             <div>
@@ -13,4 +13,4 @@ const Section1 = () => {
     )
 }
 
-export default Section1;
+export default HeroSection;

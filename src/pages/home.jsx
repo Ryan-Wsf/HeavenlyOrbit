@@ -3,14 +3,14 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import InfiniteCarousel from '../components/InfiniteCarousel';
 import Destinations from '../../destinations.json';
-import Section1 from '../components/section1';
+import HeroSection from '../components/heroSection';
 
 const Home = () => {
     return (
         <div className='home'>
             <div className='div_background_image'>
             <Header />
-            <Section1 />
+            <HeroSection />
             </div>
             <main>
                 <InfiniteCarousel datas={Destinations} />

@@ -6,7 +6,20 @@
       {
         "id": 1,
         "name": "Quizz ",
-        "number": "#1"
+        "number": "#1",
+        "questions": [
+          {
+          "id": 1,
+          "question": "Quel est la distance entre la Terre et la Lune ?",
+          "options": [
+            "La distance entre la Terre et la Lune est de 384,400 km.",
+            "La distance entre la Terre et la Lune est de 244,000 km.",
+            "La distance entre la Terre et la Lune est de 149,600 km.",
+            "La distance entre la Terre et la Lune est de 114,000 km."
+          ],
+          "correctAnswer": 1
+        }
+      ]
       },
       {
         "id": 2,

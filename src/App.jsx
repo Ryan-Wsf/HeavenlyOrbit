@@ -9,7 +9,8 @@ import Login from './pages/login';
 import ForgotPassword from './pages/forgotPassword';
 import Content from './pages/content';
 import QuizzSelect from './pages/quizzSelect';
-import Quizz from '../quizz.json';
+import QuizzQuestion from './pages/quizzProgress';
+import Quizz from '../quizz.json'; 
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
                 <Route path="/content" element={<Content />} />
                 <Route path="/quizzSelect" element={<QuizzSelect datas={Quizz} />} />
+                <Route path="/quizzProgress/:idLevel/:idQuizz" element={<QuizzQuestion datas={Quizz} />} />
             </Routes>
         </Router>
     );
