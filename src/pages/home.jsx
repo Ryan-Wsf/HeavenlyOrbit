@@ -5,12 +5,12 @@ import InfiniteCarousel from '../components/InfiniteCarousel';
 import Destinations from '../../destinations.json';
 import HeroSection from '../components/heroSection';
 
-const Home = () => {
+const Home = ({ handleLogout }) => {
     return (
         <div className='home'>
             <div className='div_background_image'>
-            <Header />
-            <HeroSection />
+                <Header handleLogout={handleLogout} />
+                <HeroSection />
             </div>
             <main>
                 <InfiniteCarousel datas={Destinations} />
@@ -34,7 +34,7 @@ const Home = () => {
             </main>
             <Footer />
         </div>
-    )
-}
+    );
+};
 
 export default Home;

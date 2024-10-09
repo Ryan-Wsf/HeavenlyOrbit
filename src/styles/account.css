@@ -62,14 +62,13 @@
 .account #div_background_image{
     content: '';
     position: absolute;
-    height: 100%;
     width: 100%;
     background-image: url('../img/Background_register.jpg');
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100%;
     display: flex;
 }
 

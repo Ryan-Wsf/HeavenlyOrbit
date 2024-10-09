@@ -28,6 +28,7 @@
 .home .max_width1440{
     max-width: 1440px;
     margin: auto;
+    padding: 0 15px;
 }
 
 .home body {
@@ -111,6 +112,30 @@ ul{
 
 /* Header */
 
+.icon_menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Menu par défaut (horizontal) */
+.main_nav {
+    display: flex;
+    transition: all 0.3s ease-in-out;
+}
+
+.main_nav ul {
+    flex-direction: row;
+    gap: 40px;
+}
+
+.icon_menu {
+    display: none; /* Cacher l'icône burger sur grand écran */
+
+}
+
+
 header div{
     display: flex;
     justify-content: space-between;
@@ -187,7 +212,6 @@ header nav ul li a{
 .div_section2 > div {
     display: flex;
     transition: transform 0.3s ease-in-out;
-    gap: 20px;
 }
 
 .div_section2 > div > a {
@@ -377,3 +401,176 @@ footer a{
     font-family: var(--roboto);
 }
 
+@media screen and (max-width: 1024px){
+
+    .main_nav {
+        display: none; 
+    }
+
+    .icon_menu {
+        display: block; /* Afficher l'icône burger */
+    }
+
+    /* Lorsque le menu est ouvert */
+    .main_nav.open {
+        display: block; 
+        position: absolute;
+        top: 60px; 
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        z-index: 9999;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .main_nav.open ul {
+        display: flex;
+        flex-direction: column; /* Menu déroulant vertical */
+        gap: 20px;
+    }
+
+    .main_nav.open ul li a {
+        font-size: 20px;
+        color: white;
+        padding: 10px;
+        border-bottom: 1px solid #444;
+    }
+
+    .home #section1 div{
+        padding: 80px 20px;
+    }
+
+    .home h1{
+        font-size: 44px!important;
+        text-align: center;
+    }
+
+    .home h2{
+        font-size: 32px!important;
+        text-align: center;
+        margin: auto;
+    }
+
+    .home p{
+        font-size: 20px!important;
+        text-align: center;
+        margin: auto;
+    }
+
+    .home #section3 div{
+        gap: 70px;
+        padding: 150px 15px 0px 15px;
+    }
+
+    .home #section3 a{
+        align-self: center;
+    }
+
+    .home .icon_menu{
+        display: block;
+    }
+
+    .home header nav{
+        display: none;
+    }
+
+    .article-carousel{
+        height: 600px!important;
+    }
+
+    .swiper-slide{
+        width: 400px!important;
+    }
+
+    .home #section4 div {
+        display: flex;
+        flex-direction: column;
+        padding:0px 15px 150px 15px;
+    }
+
+    .home #section4 a{
+        align-self: center;
+    }
+
+    .home #section4 p {
+        width: 72%;
+    }
+}
+
+@media screen and (max-width: 768px){
+
+    .article-carousel{
+        height: 500px!important;
+    }
+
+    .swiper-slide{
+        width: 300px!important;
+    }
+}
+
+
+@media screen and (max-width: 600px){
+
+    .article-carousel{
+        height: 450px!important;
+    }
+
+    .swiper-slide{
+        width: 250px!important;
+    }
+
+    .home #section3 p,
+    .home #section4 p{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 575px){
+    footer div {
+        align-items: baseline;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 535px){
+    h2{
+        text-align: center!important;
+    }
+}
+
+@media screen and (max-width: 500px){
+
+    #logo{
+        font-size: 28px!important;
+    }
+    .article-carousel{
+        height: 400px!important;
+    }
+
+    .swiper-slide{
+        width: 200px!important;
+    }
+
+    .home h1{
+        font-size: 36px!important;
+        text-align: center!important;
+    }
+
+    .home h2{
+        font-size: 24px!important;
+        text-align: center!important;
+        margin: auto;
+    }
+
+    .home #section1 div a {
+        font-size: 22px!important;
+    }
+
+    .home #section3 a,
+    .home #section4 a{
+        font-size: 20px!important;
+    }
+}
+    
