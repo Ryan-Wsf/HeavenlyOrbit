@@ -4,6 +4,7 @@ import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
+
 const Header = ({ handleLogout }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // État pour ouvrir/fermer le menu
@@ -26,7 +27,10 @@ const Header = ({ handleLogout }) => {
                         <li><HashLink smooth to="/#section2" className="anim_undercase">Exploration</HashLink></li>
                         <li><HashLink smooth to="/#section3" className="anim_undercase">Quizz</HashLink></li>
                         {isAuthenticated ? (
-                            <li><Link to="/" onClick={handleLogout} className="anim_undercase">Déconnexion</Link></li>
+                            <>
+                                <li><Link to="#" className="anim_undercase">Mon compte</Link></li>
+                                <li><Link to="/" onClick={handleLogout} className="anim_undercase">Déconnexion</Link></li>
+                            </>
                         ) : (
                             <>
                                 <li><Link to="/login" className="anim_undercase">Connexion</Link></li>
@@ -35,9 +39,9 @@ const Header = ({ handleLogout }) => {
                         )}
                     </ul>
                 </nav>
-                <Link to="#" className="icon_menu" onClick={toggleMenu}>
+                <button className="icon_menu" onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faBars} />
-                </Link>
+                </button>
             </div>
         </header>
     );

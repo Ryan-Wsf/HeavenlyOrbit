@@ -2,6 +2,7 @@ import React from 'react';
 import { login } from '../api/bookApi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Header from '../components/header';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -16,7 +17,6 @@ const Login = () => {
         e.preventDefault();
         try {
             const data = await login({ email, password });
-            console.log(data)
             localStorage.setItem('token', data.token);
             setMessage('Connexion réussie. Merci de vous connecter.');
             navigate('/');

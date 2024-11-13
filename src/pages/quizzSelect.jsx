@@ -1,14 +1,50 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import Header from '../components/header';
+import { getQuizzesLevel, getQuizzesByDifficulty } from '../api/bookApi';
 
-const QuizzSelect = ({ datas }) => {
-    const [selectedLevel, setSelectedLevel] = useState(null);  // Niveau sélectionné
-    const [selectedQuizz, setSelectedQuizz] = useState(null);  // Quizz sélectionné
-    const [base, setBase] = useState("Veuillez sélectionner un Quizz");  // Nombre de questions du quizz
+const QuizzSelect = () => {
+    const [difficultyLevels, setDifficultyLevels] = useState([]);
+    const [selectedLevel, setSelectedLevel] = useState(null);
+    const [quizzes, setQuizzes] = useState([]);
+    const [selectedQuizz, setSelectedQuizz] = useState(null);
+    const [base, setBase] = useState("Veuillez sélectionner un niveau de difficulté");
     const navigate = useNavigate();
+    const isAuthenticated = localStorage.getItem('token');
 
-    // Fonction appelée quand l'utilisateur clique sur "Commencez le quizz"
+    useEffect(() => {
+        if (isAuthenticated) {
+            const fetchDifficultyLevels = async () => {
+                try {
+                    const data = await getQuizzesLevel();
+                    if (data && data.difficultyQuiz) {
+                        setDifficultyLevels(data.difficultyQuiz);
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch difficulty levels', error);
+                }
+            };
+            fetchDifficultyLevels();
+        }
+    }, [isAuthenticated]);
+
+    useEffect(() => {
+        const fetchQuizzes = async () => {
+            if (selectedLevel) {
+                try {
+                    const data = await getQuizzesByDifficulty(selectedLevel.id);
+                    if (data && data.quizz) {
+                        setQuizzes(data.quizz);
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch quizzes', error);
+                }
+            }
+        };
+
+        fetchQuizzes();
+    }, [selectedLevel]);
+
     const handleStartQuizz = () => {
         if (selectedQuizz) {
             navigate(`/quizzProgress/${selectedLevel.id}/${selectedQuizz.id}`);
@@ -17,53 +53,61 @@ const QuizzSelect = ({ datas }) => {
         }
     };
 
-    // Messages explicites pour chaque niveau
-    const levelMessages = {
-        "Débutant": "Vous avez sélectionné le niveau Débutant, parfait pour commencer !",
-        "Intermédiaire": "Vous avez sélectionné le niveau Intermédiaire, prêt pour un challenge ?",
-        "Avancé": "Vous avez sélectionné le niveau Avancé, bon courage pour le quizz difficile !"
-    };
+    if (!isAuthenticated) {
+        return (
+            <div className="quizzPage">
+                <div className="div_background_image">
+                    <Header />
+                    <main className="max_width1440">
+                        <div className="access-denied">
+                            <h1 className='title_refused_access'>Accès refusé</h1>
+                            <p className='p_refused_acces'>Pour accéder aux quiz et tester vos connaissances sur l'astronomie, vous devez avoir un compte et être connecté.</p>
+                            <div className='auth-buttons'>
+                                <Link to="/login" className='button-white'>Se connecter</Link>
+                                <p>Pas encore de compte ?</p>
+                                <Link to="/register" className='button-white'>S'inscrire</Link>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        );
+    }
 
+    // Reste du code pour les utilisateurs authentifiés...
     return (
         <div className="quizzPage">
             <div className="div_background_image">
                 <Header />
                 <main className="max_width1440">
                     <h1>Quizz</h1>
-                    {/* Message explicite basé sur le niveau sélectionné */}
-                    <p className='p_title1'>{levelMessages[selectedLevel?.name]}</p>
+                    <p className='p_title1'>{base}</p>
                     
-                    {/* Sélection du niveau */}
-                    {base && (
-                        <p className='p_title1'>{base}</p>
-                    )}
                     <div className='level_select'>
-                        {datas.map((item) => (
+                        {difficultyLevels.map((level) => (
                             <button
-                                className={`not-active-level button-white ${selectedLevel?.name === item.name ? 'active-level' : ''}`}  // Ajouter une classe si le niveau est sélectionné
-                                key={item.id}
+                                className={`not-active-level button-white ${selectedLevel?.id === level.id ? 'active-level' : ''}`}
+                                key={level.id}
                                 onClick={() => {
-                                    setSelectedLevel(item);
+                                    setSelectedLevel(level);
                                     setSelectedQuizz(null);
-                                    setBase(null);
+                                    setBase(`Vous avez sélectionné le niveau ${level.name_difficulty_quiz}`);
                                 }}
                             >
-                                {item.name}
+                                {level.name_difficulty_quiz}
                             </button>
                         ))}
                     </div>
 
-                    {/* Affichage des quizz correspondant au niveau sélectionné */}
                     {selectedLevel && (
                         <div className='numberQuizz'>
-                            {selectedLevel.numberQuizz.map((quiz) => (
+                            {quizzes.map((quiz) => (
                                 <button
-                                    className={`${selectedQuizz?.id === quiz.id ? 'active-quizz' : ''}`}  // Ajouter une classe si le quizz est sélectionné
+                                    className={`${selectedQuizz?.id === quiz.id ? 'active-quizz' : ''}`}
                                     key={quiz.id}
-                                    onClick={() => setSelectedQuizz(quiz)}  // Sélectionner le quizz
+                                    onClick={() => setSelectedQuizz(quiz)}
                                 >
-                                    <span>{quiz.name}</span>
-                                    <span>{quiz.number}</span>
+                                    <span>{quiz.title_quizz}</span>
                                 </button>
                             ))}
                         </div>
@@ -73,7 +117,8 @@ const QuizzSelect = ({ datas }) => {
                         <button
                             type="button"
                             className='button-white'
-                            onClick={handleStartQuizz}  // Démarrer le quizz
+                            onClick={handleStartQuizz}
+                            disabled={!selectedQuizz}
                         >
                             Commencer le quizz
                         </button>

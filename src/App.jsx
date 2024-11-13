@@ -11,6 +11,7 @@ import Content from './pages/content';
 import QuizzSelect from './pages/quizzSelect';
 import QuizzQuestion from './pages/quizzProgress';
 import Quizz from '../quizz.json';
+import QuizzResult from './pages/quizzResult';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -37,6 +38,8 @@ const App = () => {
                 <Route path="/content" element={<Content />} />
                 <Route path="/quizzSelect" element={<QuizzSelect datas={Quizz} />} />
                 <Route path="/quizzProgress/:idLevel/:idQuizz" element={<QuizzQuestion datas={Quizz} />} />
+                <Route path="/quizzResult" element={<QuizzResult />} />
+
             </Routes>
         </Router>
     );
