@@ -91,6 +91,20 @@
 
 /* ---------------------------Page d'accès refusé-------------------------------------*/
 
+
+.quizzPage .access-denied {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    text-align: center;
+}
+
+.auth-buttons .button-white {
+    font-size: 21px!important;
+}
+
 .quizzPage .title_refused_access{
     margin: 40px auto;
 }

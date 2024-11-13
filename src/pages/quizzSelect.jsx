@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Header from '../components/header';
 import { getQuizzesLevel, getQuizzesByDifficulty } from '../api/bookApi';
 
+// Composant qui affiche la page de sélection de quizz
 const QuizzSelect = () => {
     const [difficultyLevels, setDifficultyLevels] = useState([]);
     const [selectedLevel, setSelectedLevel] = useState(null);
@@ -12,6 +13,7 @@ const QuizzSelect = () => {
     const navigate = useNavigate();
     const isAuthenticated = localStorage.getItem('token');
 
+    // Effect qui récupère les niveaux de difficulté
     useEffect(() => {
         if (isAuthenticated) {
             const fetchDifficultyLevels = async () => {
@@ -27,7 +29,7 @@ const QuizzSelect = () => {
             fetchDifficultyLevels();
         }
     }, [isAuthenticated]);
-
+    // Effect qui récupère les quizzes d'un niveau
     useEffect(() => {
         const fetchQuizzes = async () => {
             if (selectedLevel) {
@@ -41,10 +43,10 @@ const QuizzSelect = () => {
                 }
             }
         };
-
         fetchQuizzes();
     }, [selectedLevel]);
 
+    // Si l'utilisateur est authentifié et qu'il a sélectionné un quizz, on redirige vers la page de progression
     const handleStartQuizz = () => {
         if (selectedQuizz) {
             navigate(`/quizzProgress/${selectedLevel.id}/${selectedQuizz.id}`);
@@ -52,7 +54,7 @@ const QuizzSelect = () => {
             alert("Veuillez sélectionner un quizz.");
         }
     };
-
+    // Si l'utilisateur n'est pas authentifié, on affiche un message d'erreur
     if (!isAuthenticated) {
         return (
             <div className="quizzPage">
@@ -73,8 +75,7 @@ const QuizzSelect = () => {
             </div>
         );
     }
-
-    // Reste du code pour les utilisateurs authentifiés...
+    // Reste du code pour les utilisateurs authentifiés : affichage de la page de progression
     return (
         <div className="quizzPage">
             <div className="div_background_image">
@@ -82,8 +83,8 @@ const QuizzSelect = () => {
                 <main className="max_width1440">
                     <h1>Quizz</h1>
                     <p className='p_title1'>{base}</p>
-                    
                     <div className='level_select'>
+                        {/* boucle qui affiche les niveaux de difficulté sélectionnables */}
                         {difficultyLevels.map((level) => (
                             <button
                                 className={`not-active-level button-white ${selectedLevel?.id === level.id ? 'active-level' : ''}`}
@@ -101,6 +102,7 @@ const QuizzSelect = () => {
 
                     {selectedLevel && (
                         <div className='numberQuizz'>
+                            {/* boucle qui affiche les quizzs sélectionnables */}
                             {quizzes.map((quiz) => (
                                 <button
                                     className={`${selectedQuizz?.id === quiz.id ? 'active-quizz' : ''}`}
@@ -112,7 +114,7 @@ const QuizzSelect = () => {
                             ))}
                         </div>
                     )}
-
+                    {/* bouton de départ du quizz */}
                     <div className='start_quizz'>
                         <button
                             type="button"

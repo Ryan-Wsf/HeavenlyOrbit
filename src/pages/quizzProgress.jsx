@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/header';
 import { getQuizQuestions } from '../api/bookApi';
 
+// Composant qui affiche la page de progression d'un quizz
 const QuizzProgress = () => {
     const { idQuizz } = useParams();
     const [questions, setQuestions] = useState([]);
@@ -13,6 +14,7 @@ const QuizzProgress = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    // Effect qui récupère les questions d'un quizz
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
@@ -28,56 +30,50 @@ const QuizzProgress = () => {
         fetchQuestions();
     }, [idQuizz]);
 
+    // Gère la progression du quiz et la navigation vers les résultats
     const handleNextQuestion = () => {
         if (selectedAnswer !== null) {
-            handleAnswer(questions[currentQuestionIndex].id, selectedAnswer);
-    
-            if (currentQuestionIndex < questions.length - 1) {
-                setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setSelectedAnswer(null);
-            } else {
-    
+            // Crée un objet avec les informations de la réponse actuelle
+            const newAnswer = {
+                questionId: questions[currentQuestionIndex].id,
+                questionText: questions[currentQuestionIndex].question,
+                selectedAnswerId: selectedAnswer,
+                selectedAnswerText: questions[currentQuestionIndex].Answers.find(a => a.id === selectedAnswer)?.text_answer || 'Réponse inconnue',
+                correctAnswerText: questions[currentQuestionIndex].Answers.find(answer => answer.is_correct_answer === true).text_answer,
+                isCorrect: selectedAnswer === questions[currentQuestionIndex].Answers.find(answer => answer.is_correct_answer === true).id
+            };
+
+            // Met à jour le tableau des réponses et le compteur de réponses correctes
+            const updatedAnswers = [...userAnswers, newAnswer];
+            setUserAnswers(updatedAnswers);
+            if (newAnswer.isCorrect) {
+                setCorrectAnswersCount(prevCount => prevCount + 1);
+            }
+
+            // Vérifie si c'est la dernière question pour naviguer vers les résultats
+            if (currentQuestionIndex === questions.length - 1) {
                 navigate('/quizzResult', {
                     state: { 
-                        userAnswers, 
-                        correctAnswersCount,
+                        userAnswers: updatedAnswers,
+                        correctAnswersCount: correctAnswersCount + (newAnswer.isCorrect ? 1 : 0),
                         questions
                     } 
                 });
+            } else {
+                // Passe à la question suivante si ce n'est pas la dernière
+                setCurrentQuestionIndex(currentQuestionIndex + 1);
+                setSelectedAnswer(null);
             }
         } else {
             alert("Veuillez sélectionner une réponse.");
         }
     };
-    
 
     if (loading) {
         return <div>Chargement...</div>;
     }
 
     const currentQuestion = questions[currentQuestionIndex];
-
-    const handleAnswer = (questionId, selectedAnswerId) => {
-        const currentQuestion = questions.find(q => q.id === questionId);
-        const correctAnswer = currentQuestion.Answers.find(answer => answer.is_correct_answer === true);
-        
-        setUserAnswers(prevAnswers => [
-            ...prevAnswers,
-            {
-                questionId,
-                questionText: currentQuestion.question, // Ajoute le texte de la question
-                selectedAnswerId,
-                selectedAnswerText: currentQuestion.Answers.find(a => a.id === selectedAnswerId)?.text_answer || 'Réponse inconnue',
-                correctAnswerText: correctAnswer.text_answer, // Ajoute le texte de la bonne réponse
-                isCorrect: selectedAnswerId === correctAnswer.id
-            }
-        ]);
-    
-        // Mettre à jour le compteur de réponses correctes
-        if (selectedAnswerId === correctAnswer.id) {
-            setCorrectAnswersCount(prevCount => prevCount + 1);
-        }
-    };
 
     return (
         <div className="quizzPage">
