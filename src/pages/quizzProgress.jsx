@@ -5,6 +5,7 @@ import { getQuizQuestions } from '../api/bookApi';
 
 // Composant qui affiche la page de progression d'un quizz
 const QuizzProgress = () => {
+    const [errorMessage, setErrorMessage] = useState("");
     const { idQuizz } = useParams();
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -33,6 +34,7 @@ const QuizzProgress = () => {
     // Gère la progression du quiz et la navigation vers les résultats
     const handleNextQuestion = () => {
         if (selectedAnswer !== null) {
+            setErrorMessage("");
             // Crée un objet avec les informations de la réponse actuelle
             const newAnswer = {
                 questionId: questions[currentQuestionIndex].id,
@@ -65,7 +67,8 @@ const QuizzProgress = () => {
                 setSelectedAnswer(null);
             }
         } else {
-            alert("Veuillez sélectionner une réponse.");
+            setErrorMessage("Veuillez sélectionner une réponse.");
+            setTimeout(() => setErrorMessage(""), 3000);
         }
     };
 
@@ -80,7 +83,12 @@ const QuizzProgress = () => {
             <div className="div_background_image">
                 <Header />
                 <main className="max_width1440">
-                    <h1 className="h1_quizzProgress">Quizz #{idQuizz}</h1>
+                    <h1 className="h1_quizzProgress">Quizz n°{idQuizz}</h1>
+                    {errorMessage && (
+                        <div className="error-message">
+                            {errorMessage}
+                        </div>
+                    )}
                     <p className="quizz_question">{currentQuestion.question}</p>
                     <div className='response_quizz'>
                         {currentQuestion.Answers && currentQuestion.Answers.map((answer) => (
@@ -100,7 +108,7 @@ const QuizzProgress = () => {
                         >
                             Continuer
                         </button>
-                        <p className="quizz_progress">{currentQuestionIndex + 1}/{questions.length}</p>
+                        <p className="quizz_progress">{currentQuestionIndex + 1} sur {questions.length}</p>
                     </div>
                 </main>
             </div>

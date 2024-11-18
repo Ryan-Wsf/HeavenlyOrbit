@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import useAuthStore from '../store/authStore';
 
-
-const Header = ({ handleLogout }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // État pour ouvrir/fermer le menu
-
-    useEffect(() => {
-        setIsAuthenticated(localStorage.getItem("token") ? true : false);
-    }, []);
+const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
+    const { isAuthenticated, logout } = useAuthStore();
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen); // Inverse l'état du menu au clic
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLogoutClick = () => {
+        logout();
+        navigate('/');
     };
 
     return (
         <header>
             <div className="max_width1440">
                 <Link id="logo" to="/" >HeavenlyOrbit</Link>
-                <nav className={`main_nav ${isMenuOpen ? 'open' : ''}`}>  {/* Ajouter la classe open si isMenuOpen est vrai */}
+                <nav className={`main_nav ${isMenuOpen ? 'open' : ''}`}>
                     <ul>
                         <li><Link to="/" className="anim_undercase">Accueil</Link></li>
                         <li><HashLink smooth to="/#section2" className="anim_undercase">Exploration</HashLink></li>
@@ -29,7 +31,7 @@ const Header = ({ handleLogout }) => {
                         {isAuthenticated ? (
                             <>
                                 <li><Link to="#" className="anim_undercase">Mon compte</Link></li>
-                                <li><Link to="/" onClick={handleLogout} className="anim_undercase">Déconnexion</Link></li>
+                                <li><Link to="/" onClick={handleLogoutClick} className="anim_undercase">Déconnexion</Link></li>
                             </>
                         ) : (
                             <>

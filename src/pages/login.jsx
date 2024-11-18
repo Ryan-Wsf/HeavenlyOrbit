@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { login } from '../api/bookApi';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Header from '../components/header';
+import useAuthStore from '../store/authStore';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -10,6 +9,7 @@ const Login = () => {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
+    const loginStore = useAuthStore(state => state.login);
 
     const handleSubmit = async(e) => {
         setMessage("");
@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const data = await login({ email, password });
-            localStorage.setItem('token', data.token);
+            loginStore(data.token);
             setMessage('Connexion réussie. Merci de vous connecter.');
             navigate('/');
         } catch (error) {
@@ -25,6 +25,7 @@ const Login = () => {
             console.error('Erreur de connexion', error);
         }
     };
+
     return (
         <div className="account">
             <div id="div_background_image">

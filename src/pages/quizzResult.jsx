@@ -29,7 +29,7 @@ const QuizzResult = () => {
                     <h1>Résultats du Quizz</h1>
                     <p>Vous avez obtenu {correctAnswersCount} réponses correctes.</p>
                     <Swiper
-                        spaceBetween={20}
+                        spaceBetween={50}
                         slidesPerView={1}
                         loop={true}
                         autoplay={{
@@ -43,10 +43,10 @@ const QuizzResult = () => {
                         modules={[Navigation]}
                         className="#"
                     >
-                        {userAnswers?.map(answer => (
+                        {userAnswers?.map((answer, index) => (
                             <SwiperSlide key={answer.questionId}>
                                 <div className='question-card'>
-                                    <p>Question: {answer.questionText}</p>
+                                    <p>Question {index + 1} : {answer.questionText}</p>
                                     <p>
                                         Votre réponse : {answer.selectedAnswerText}
                                         {answer.isCorrect ? 
