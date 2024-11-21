@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../api/bookApi';
+import useAuthStore from '../store/authStore';
 
 const Register = () => {
     const [lastname, setLastname] = useState("");
@@ -10,6 +11,7 @@ const Register = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
+    const registerStore = useAuthStore(state => state.register);
     const navigate = useNavigate();
     
     const handleSubmit = async(e) => {
@@ -22,8 +24,8 @@ const Register = () => {
                 return;
             }
             const data = await register({ lastname, name, email, password, passwordConfirmation });
-            console.log(data);
-            localStorage.setItem('token', data.token);
+            // utilisation de zustand pour s'inscrire
+            registerStore(data.token);
             setMessage('Inscription réussie. Merci de vous connecter.');
             navigate('/login');
         } catch (error) {
