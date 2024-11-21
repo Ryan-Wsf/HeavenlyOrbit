@@ -10,7 +10,6 @@ import ForgotPassword from './pages/forgotPassword';
 import Content from './pages/content';
 import QuizzSelect from './pages/quizzSelect';
 import QuizzQuestion from './pages/quizzProgress';
-import Quizz from '../quizz.json';
 import QuizzResult from './pages/quizzResult';
 
 const App = () => {
@@ -36,10 +35,9 @@ const App = () => {
                 <Route path="/register" element={isAuthenticated ? <Navigate to="/" replace /> : <Register handleLogin={handleLogin} />} />
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
                 <Route path="/content" element={<Content />} />
-                <Route path="/quizzSelect" element={<QuizzSelect datas={Quizz} />} />
-                <Route path="/quizzProgress/:idLevel/:idQuizz" element={<QuizzQuestion datas={Quizz} />} />
+                <Route path="/quizzSelect" element={<QuizzSelect />} />
+                <Route path="/quizzProgress/:idLevel/:idQuizz" element={<QuizzQuestion />} />
                 <Route path="/quizzResult" element={<QuizzResult />} />
-
             </Routes>
         </Router>
     );

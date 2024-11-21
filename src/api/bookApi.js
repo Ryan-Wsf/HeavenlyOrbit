@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://heavenly-orbit-back.vercel.app';
 
 const handleResponse = async (response) => {
     const contentType = response.headers.get('Content-Type');
