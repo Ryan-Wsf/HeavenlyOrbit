@@ -82,7 +82,7 @@ ul{
 
 /* Animation */
 
-.home .anim_undercase {
+.anim_undercase {
     text-decoration: none;
     color: var(--white);
     font-size: 20px;
@@ -94,7 +94,7 @@ ul{
     cursor: pointer;
 }
 
-.home .anim_undercase:before {
+.anim_undercase:before {
     content: '';
     position: absolute;
     width: 0;
@@ -105,7 +105,7 @@ ul{
     transition: all 0.3s ease;
 }
 
-.home .anim_undercase:hover:before {
+.anim_undercase:hover:before {
     visibility: visible;
     width: 100%;
 }

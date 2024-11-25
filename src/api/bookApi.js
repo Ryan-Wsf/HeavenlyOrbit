@@ -32,16 +32,16 @@ const handleResponse = async (response) => {
 
 
   // Register
-  export const register = async (userData) => {
+export const register = async (userData) => {
     const response = await fetch(`${API_URL}/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
     });
     return handleResponse(response);
-  };
+};
 
   // Login
 export const login = async (credentials) => {

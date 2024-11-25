@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import './styles/style1.css';
 import './styles/account.css';
 import './styles/quizz.css';
+import './styles/content.css';
 import Home from './pages/home';
 import Register from './pages/register';
 import Login from './pages/login';
@@ -34,7 +35,9 @@ const App = () => {
                 <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <Login handleLogin={handleLogin} />} />
                 <Route path="/register" element={isAuthenticated ? <Navigate to="/" replace /> : <Register handleLogin={handleLogin} />} />
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
-                <Route path="/content" element={<Content />} />
+                <Route path="/content" element={
+                    <Content handleLogout={handleLogout} />
+                } />
                 <Route path="/quizzSelect" element={<QuizzSelect />} />
                 <Route path="/quizzProgress/:idLevel/:idQuizz" element={<QuizzQuestion />} />
                 <Route path="/quizzResult" element={<QuizzResult />} />
