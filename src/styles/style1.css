@@ -65,14 +65,32 @@ p{
     color: var(--black);
 }
 
-.home .div_background_image{
-    background-image: url('/img/background_galaxie.jpeg');
-    object-fit: cover;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* background image hero */
+
+.background_image_container{
+    position: relative;
     height: 800px;
+    overflow: hidden;
+}
+
+.background_image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.div_background_image{
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
     padding-bottom: 150px;
+    width: 100%;
+    height: 100%;
 }
 
 ul{
@@ -168,14 +186,9 @@ header nav ul li a{
 
 /* Section 1 */
 
-.home #section1{
-    margin-top: 100px;
-}
-
 .home #section1 div{
     max-width: 1150px;
-    margin: auto;
-    padding: 120px 80px;
+    margin: 120px auto 100px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -183,6 +196,8 @@ header nav ul li a{
     align-items: center;
     gap: 40px;
     background-color: rgba(0, 0, 0, 0.75);
+    height: 400px;
+    max-width: 1150px;
 }
 
 .home #section1 h2{

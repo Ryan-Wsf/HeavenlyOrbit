@@ -8,9 +8,12 @@ import HeroSection from '../components/heroSection';
 const Home = ({ handleLogout }) => {
     return (
         <div className='home'>
-            <div className='div_background_image'>
-                <Header handleLogout={handleLogout} />
-                <HeroSection />
+            <div className='background_image_container'>
+                <div className='div_background_image'>
+                    <img className='background_image' src='/img/background_galaxie.jpeg' alt='background' />
+                    <Header handleLogout={handleLogout} />
+                    <HeroSection />
+                </div>
             </div>
             <main>
                 <InfiniteCarousel datas={Destinations} />

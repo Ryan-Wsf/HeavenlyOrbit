@@ -10,9 +10,12 @@ import Destinations from '../../destinations.json';
 const Content = ( { handleLogout } ) => {
     return (
         <div className="content">
-            <div className="div_background_image">
-                <Header handleLogout={handleLogout} />
-                <HeroSectionContent />
+            <div className='background_image_container'>
+                <div className='div_background_image'>
+                    <img className='background_image' src='/img/Background-content.jpg' alt='background' />
+                    <Header handleLogout={handleLogout} />
+                    <HeroSectionContent />
+                </div>
             </div>
             <main>
                 <section className="section2">

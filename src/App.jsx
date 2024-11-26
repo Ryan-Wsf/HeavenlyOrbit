@@ -12,6 +12,7 @@ import Content from './pages/content';
 import QuizzSelect from './pages/quizzSelect';
 import QuizzQuestion from './pages/quizzProgress';
 import QuizzResult from './pages/quizzResult';
+import ContentMore from './pages/contentMore';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -37,6 +38,9 @@ const App = () => {
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
                 <Route path="/content" element={
                     <Content handleLogout={handleLogout} />
+                } />
+                <Route path="/contentMore" element={
+                    <ContentMore handleLogout={handleLogout} />
                 } />
                 <Route path="/quizzSelect" element={<QuizzSelect />} />
                 <Route path="/quizzProgress/:idLevel/:idQuizz" element={<QuizzQuestion />} />
