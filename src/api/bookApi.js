@@ -1,4 +1,5 @@
 const API_URL = 'https://heavenly-orbit-back.vercel.app';
+const API_URL_DEV = 'http://localhost:6543';
 
 const handleResponse = async (response) => {
     const contentType = response.headers.get('Content-Type');
@@ -33,7 +34,7 @@ const handleResponse = async (response) => {
 
   // Register
 export const register = async (userData) => {
-    const response = await fetch(`${API_URL}/auth/register`, {
+    const response = await fetch(`${API_URL_DEV}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -45,7 +46,7 @@ export const register = async (userData) => {
 
   // Login
 export const login = async (credentials) => {
-  const response = await fetch(`${API_URL}/auth/login`, {
+  const response = await fetch(`${API_URL_DEV}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -57,50 +58,61 @@ export const login = async (credentials) => {
 
 // Quizzes
 export const getQuizzes = async (id) => {
-  const response = await fetch(`${API_URL}/quizzes/getAllQuizzes/${id}`, {headers: getAuthHeaders()}) ;
+  const response = await fetch(`${API_URL_DEV}/quizzes/getAllQuizzes/${id}`, {headers: getAuthHeaders()}) ;
   return handleResponse(response);
 }
 
 // Quizz
 export const getQuiz = async (id) => {
-  const response = await fetch(`${API_URL}/quizzes/${id}`, {headers: getAuthHeaders()}) ;
+  const response = await fetch(`${API_URL_DEV}/quizzes/${id}`, {headers: getAuthHeaders()}) ;
   return handleResponse(response);
 }
 
 // Quizz Questions
 export const getQuizQuestions = async (id) => {
-  const response = await fetch(`${API_URL}/questions/getAllQuestions/${id}`, {headers: getAuthHeaders()}) ;
+  const response = await fetch(`${API_URL_DEV}/questions/getAllQuestions/${id}`, {headers: getAuthHeaders()}) ;
   return handleResponse(response);
 }
 
 // Quizz Question
 export const getQuizQuestion = async (id) => {
-  const response = await fetch(`${API_URL}/questions/getQuestion/${id}`, {headers: getAuthHeaders()}) ;
+  const response = await fetch(`${API_URL_DEV}/questions/getQuestion/${id}`, {headers: getAuthHeaders()}) ;
   return handleResponse(response);
 }
 
 // Quizzes level
 export const getQuizzesLevel = async () => {
-  console.log('Sending request to:', `${API_URL}/difficultyQuiz/getAllDifficultyQuiz`);
-  const response = await fetch(`${API_URL}/difficultyQuiz/getAllDifficultyQuiz`, {headers: getAuthHeaders()});
+  console.log('Sending request to:', `${API_URL_DEV}/difficultyQuiz/getAllDifficultyQuiz`);
+  const response = await fetch(`${API_URL_DEV}/difficultyQuiz/getAllDifficultyQuiz`, {headers: getAuthHeaders()});
   console.log('Response received:', response);
   return handleResponse(response);
 }
 
 // Quizz level
 export const getQuizLevel = async (id) => {
-  const response = await fetch(`${API_URL}/difficultyQuiz/getDifficultyQuiz/${id}`, {headers: getAuthHeaders()}) ;
+  const response = await fetch(`${API_URL_DEV}/difficultyQuiz/getDifficultyQuiz/${id}`, {headers: getAuthHeaders()}) ;
   return handleResponse(response);
 }
 
 // Quizz by Difficulty
 export const getQuizzesByDifficulty = async (difficultyId) => {
   console.log('Fetching quizzes for difficulty:', difficultyId);
-  const response = await fetch(`${API_URL}/quizzes/getQuizByDifficulty/${difficultyId}`, {headers: getAuthHeaders()});
+  const response = await fetch(`${API_URL_DEV}/quizzes/getQuizByDifficulty/${difficultyId}`, {headers: getAuthHeaders()});
   console.log('Response received:', response);
   return handleResponse(response);
 }
 
+// Forgot Password
+export const forgotPassword = async (email) => {
+  const response = await fetch(`${API_URL_DEV}/forgotPassword/send-email`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+  return handleResponse(response);
+};
 
 
 

@@ -475,7 +475,10 @@ footer a{
 @media screen and (max-width: 1024px){
 
     .home #section1 div{
-        padding: 80px 20px;
+        padding: 120px 20px;
+        height: auto;
+        gap: 20px;
+        margin: 100px auto;
     }
 
     .home h1{
@@ -538,6 +541,13 @@ footer a{
 
 @media screen and (max-width: 768px){
 
+    .home #section1 div{
+        padding: 20px;
+        height: auto;
+        gap: 20px;
+        margin: auto;
+    }
+
     .article-carousel{
         height: 450px!important;
     }
@@ -581,6 +591,12 @@ footer a{
 
 @media screen and (max-width: 500px){
 
+    .home #section1 div{
+        height: auto;
+        gap: 10px;
+        margin: 40px auto;
+    }
+
     #logo{
         font-size: 28px!important;
     }
@@ -593,18 +609,18 @@ footer a{
     }
 
     .home h1{
-        font-size: 36px!important;
+        font-size: 30px!important;
         text-align: center!important;
     }
 
     .home h2{
-        font-size: 24px!important;
+        font-size: 20px!important;
         text-align: center!important;
         margin: auto;
     }
 
     .home #section1 div a {
-        font-size: 22px!important;
+        font-size: 20px!important;
     }
 
     .home #section3 a,
